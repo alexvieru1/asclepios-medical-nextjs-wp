@@ -22,8 +22,8 @@ type FormFieldContextValue<
   name: TName
 }
 
-const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
+const FormFieldContext = React.createContext<FormFieldContextValue | undefined>(
+  undefined
 )
 
 const FormField = <
@@ -39,17 +39,59 @@ const FormField = <
   )
 }
 
+const getFormItemId = (name: string) => {
+  const sanitized = name
+    .trim()
+    .replace(/\[(\w+)\]/g, "-$1")
+    .replace(/[.\s]+/g, "-")
+    .replace(/[^A-Za-z0-9_-]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "")
+
+  return sanitized.length ? `form-${sanitized}` : undefined
+}
+
+type FormItemContextValue = {
+  id: string
+}
+
+const FormItemContext = React.createContext<FormItemContextValue | undefined>(
+  undefined
+)
+
+const FormItem = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, id: idProp, ...props }, ref) => {
+  const fieldContext = React.useContext(FormFieldContext)
+  const autoId = React.useId()
+  const derivedId = fieldContext?.name
+    ? getFormItemId(String(fieldContext.name))
+    : undefined
+  const id = idProp ?? derivedId ?? autoId
+
+  return (
+    <FormItemContext.Provider value={{ id }}>
+      <div ref={ref} id={id} className={cn("space-y-2", className)} {...props} />
+    </FormItemContext.Provider>
+  )
+})
+FormItem.displayName = "FormItem"
+
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
   const itemContext = React.useContext(FormItemContext)
   const { getFieldState, formState } = useFormContext()
 
-  const fieldState = getFieldState(fieldContext.name, formState)
-
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>")
   }
 
+  if (!itemContext) {
+    throw new Error("useFormField should be used within <FormItem>")
+  }
+
+  const fieldState = getFieldState(fieldContext.name, formState)
   const { id } = itemContext
 
   return {
@@ -61,28 +103,6 @@ const useFormField = () => {
     ...fieldState,
   }
 }
-
-type FormItemContextValue = {
-  id: string
-}
-
-const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
-)
-
-const FormItem = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  const id = React.useId()
-
-  return (
-    <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn("space-y-2", className)} {...props} />
-    </FormItemContext.Provider>
-  )
-})
-FormItem.displayName = "FormItem"
 
 const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,

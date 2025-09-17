@@ -17,7 +17,7 @@ export type DoctorCard = {
   title: string;
   slug: string;
   featuredImage?: { node?: { mediaItemUrl: string | null } | null } | null;
-  specialities?: { edges: { node: { name: string; slug: string } }[] };
+  specialities?: { edges: { node: { name: string; slug?: string | null } }[] };
   doctorFields?: {
     shortDescription?: string | null;
     schedule?: string | null;
