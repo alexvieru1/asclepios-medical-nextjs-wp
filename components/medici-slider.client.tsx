@@ -13,7 +13,7 @@ const AnimatedTestimonials = dynamic(
 
 export function MediciSliderClient({
   testimonials,
-  autoplay = true,
+  autoplay = false,
 }: {
   testimonials: Testimonial[];
   autoplay?: boolean;
