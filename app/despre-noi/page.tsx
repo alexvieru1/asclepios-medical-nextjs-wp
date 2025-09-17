@@ -25,8 +25,8 @@ const DR_RAICA_IMG =
 // Safer to keep hrefs easily editable:
 const LINKS = {
   euromaterna: "https://www.euromaterna.ro/", // update if needed
-  vrajaMarii: "https://vrajamarii.ro/", // update if needed
-  drRaica: "https://danraica.ro/", // update if needed
+  vrajaMarii: "https://complexvrajamarii.ro/", // update if needed
+  drRaica: "https://dan.raica.ro/", // update if needed
 };
 
 export const metadata: Metadata = {

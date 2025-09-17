@@ -191,9 +191,10 @@ function DoctorsGrid({
             </CardHeader>
 
             <CardFooter className="pt-0 justify-center">
-              <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+              {/* <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
                 <Link href={`/medici/${m.slug}`}>Vezi detalii</Link>
-              </Button>
+              </Button> */}
+              {/* //TODO IN CAZ DE AVEM PAGINA PER DR */}
             </CardFooter>
           </Card>
         )
