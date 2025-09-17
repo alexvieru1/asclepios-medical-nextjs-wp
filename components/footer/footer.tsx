@@ -21,7 +21,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-2">
               <span className="text-2xl font-bold tracking-tight text-emerald-700">Asclepios</span>
               <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-700">
-                Medical Center
+                Medical
               </span>
             </Link>
             <p className="mt-3 text-sm leading-6 text-gray-600">
@@ -68,7 +68,7 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-gray-900">Contact</h3>
             <ul className="mt-4 space-y-3 text-sm text-gray-700">
-              <li className="flex items-start gap-2">
+              <li className="flex items-start gap-2 xl:gap-1">
                 <IconMapPin className="mt-0.5 h-5 w-5 text-emerald-700" />
                 <div>
                   Str. Prelungirea Bucovinei nr. 8B, Apartament 1<br />
@@ -85,15 +85,15 @@ export function Footer() {
                   </div>
                 </div>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 xl:gap-1">
                 <IconPhone className="h-5 w-5 text-emerald-700" />
                 <a href="tel:+40241611445" className="hover:underline">0241.611.445</a>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 xl:gap-1">
                 <IconPrinter className="h-5 w-5 text-emerald-700" />
                 <a href="tel:+40241511445" className="hover:underline">0241.511.445 (fax)</a>
               </li>
-              <li className="flex items-center gap-2 break-all">
+              <li className="flex items-center gap-2 xl:gap-1 break-all">
                 <IconMail className="h-5 w-5 text-emerald-700" />
                 <a href="mailto:office@asclepios-medical.ro" className="hover:underline">
                   office@asclepios-medical.ro
@@ -136,7 +136,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link href="/gdpr" className="hover:text-emerald-700">GDPR</Link>
             <Link href="/cookies" className="hover:text-emerald-700">Cookie-uri</Link>
-            <Link href="/termeni-si-conditii" className="hover:text-emerald-700">Termeni</Link>
+            {/* <Link href="/termeni-si-conditii" className="hover:text-emerald-700">Termeni</Link> */}
           </div>
         </div>
       </div>
