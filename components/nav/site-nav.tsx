@@ -50,7 +50,7 @@ export function SiteNavbar() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary" href="tel:+40241611145">Sună-ne</NavbarButton>
+            <NavbarButton className="lg:rounded-3xl" variant="primary" href="tel:+40241611145">Sună-ne</NavbarButton>
           </div>
         </NavBody>
 

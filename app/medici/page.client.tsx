@@ -1,36 +1,30 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import {
-  Card,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
-import { Clock } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Card, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { Clock } from "lucide-react";
 
-type UiSpecialty = { slug: string; name: string }
+type UiSpecialty = { slug: string; name: string };
 type UiDoctor = {
-  slug: string
-  title: string
-  img: string | null
-  specialties: { name: string; slug?: string | null }[]
-  schedule: string | null
-}
+  slug: string;
+  title: string;
+  img: string | null;
+  specialties: { name: string; slug?: string | null }[];
+  schedule: string | null;
+};
 
-function matchesSpecialty(
-  doc: UiDoctor,
-  sp: UiSpecialty
-): boolean {
+function matchesSpecialty(doc: UiDoctor, sp: UiSpecialty): boolean {
   // Prefer slug match when available; fall back to case-insensitive name.
-  if (doc.specialties.some((s) => s.slug && s.slug === sp.slug)) return true
-  const target = sp.name.trim().toLowerCase()
-  return doc.specialties.some((s) => (s.name || "").trim().toLowerCase() === target)
+  if (doc.specialties.some((s) => s.slug && s.slug === sp.slug)) return true;
+  const target = sp.name.trim().toLowerCase();
+  return doc.specialties.some(
+    (s) => (s.name || "").trim().toLowerCase() === target
+  );
 }
 
 export default function MediciClient({
@@ -38,15 +32,17 @@ export default function MediciClient({
   doctors,
   initialSlug,
 }: {
-  specialties: UiSpecialty[]
-  doctors: UiDoctor[]
-  initialSlug: string | null
+  specialties: UiSpecialty[];
+  doctors: UiDoctor[];
+  initialSlug: string | null;
 }) {
-  const fallbackSlug = specialties[0]?.slug ?? null
+  const fallbackSlug = specialties[0]?.slug ?? null;
   const normalizedInitial =
-    specialties.length && initialSlug && specialties.some((s) => s.slug === initialSlug)
+    specialties.length &&
+    initialSlug &&
+    specialties.some((s) => s.slug === initialSlug)
       ? initialSlug
-      : fallbackSlug
+      : fallbackSlug;
 
   if (!specialties.length) {
     return (
@@ -60,7 +56,7 @@ export default function MediciClient({
           </header>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -73,50 +69,56 @@ export default function MediciClient({
           </p>
         </header>
 
-        <Tabs key={normalizedInitial ?? "fallback"} defaultValue={normalizedInitial ?? undefined} className="w-full">
-          <TabsList className="grid w-full gap-2 [grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))]">
+        <Tabs
+          key={normalizedInitial ?? "fallback"}
+          defaultValue={normalizedInitial ?? undefined}
+          className="w-full"
+        >
+          <TabsList className="h-auto w-full gap-2 flex flex-wrap justify-center lg:grid lg:justify-start lg:[grid-template-columns:repeat(auto-fit,minmax(11rem,1fr))]">
+            {" "}
             {specialties.map((sp) => (
-              <TabsTrigger key={sp.slug} value={sp.slug} className="w-full text-center">
+              <TabsTrigger
+                key={sp.slug}
+                value={sp.slug}
+                className="w-full text-center"
+              >
                 {sp.name}
               </TabsTrigger>
             ))}
           </TabsList>
 
           {specialties.map((sp) => {
-            const items = doctors.filter((d) => matchesSpecialty(d, sp))
+            const items = doctors.filter((d) => matchesSpecialty(d, sp));
             return (
               <TabsContent key={sp.slug} value={sp.slug} className="mt-8">
-                <DoctorsGrid
-                  items={items}
-                  activeSpecialtyLabel={sp.name}
-                />
+                <DoctorsGrid items={items} activeSpecialtyLabel={sp.name} />
                 {items.length === 0 && (
                   <p className="mt-6 text-center text-sm text-muted-foreground">
                     Momentan nu există medici afișați pentru {sp.name}.
                   </p>
                 )}
               </TabsContent>
-            )
+            );
           })}
         </Tabs>
       </div>
     </section>
-  )
+  );
 }
 
 function DoctorsGrid({
   items,
   activeSpecialtyLabel,
 }: {
-  items: UiDoctor[]
-  activeSpecialtyLabel: string
+  items: UiDoctor[];
+  activeSpecialtyLabel: string;
 }) {
   const lgCols =
     items.length <= 1
       ? "lg:grid-cols-1"
       : items.length === 2
       ? "lg:grid-cols-2"
-      : "lg:grid-cols-3"
+      : "lg:grid-cols-3";
 
   return (
     <div className={cn("grid grid-cols-1 gap-6 justify-items-center", lgCols)}>
@@ -127,15 +129,20 @@ function DoctorsGrid({
           ...m.specialties
             .map((s) => s.name)
             .filter(
-              (n) => n.trim().toLowerCase() !== activeSpecialtyLabel.trim().toLowerCase()
+              (n) =>
+                n.trim().toLowerCase() !==
+                activeSpecialtyLabel.trim().toLowerCase()
             ),
-        ].filter(Boolean)
+        ].filter(Boolean);
 
-        const visible = ordered.slice(0, 2)
-        const extra = Math.max(ordered.length - visible.length, 0)
+        const visible = ordered.slice(0, 2);
+        const extra = Math.max(ordered.length - visible.length, 0);
 
         return (
-          <Card key={m.slug} className="w-full max-w-sm overflow-hidden text-center">
+          <Card
+            key={m.slug}
+            className="w-full max-w-sm overflow-hidden text-center"
+          >
             {/* Square photo */}
             <div className="relative aspect-square w-full bg-gray-50">
               {m.img ? (
@@ -184,7 +191,10 @@ function DoctorsGrid({
               {/* Generic schedule (your WP model has a single schedule string) */}
               {m.schedule && (
                 <div className="mt-2 flex items-center justify-center gap-2 text-sm text-gray-700">
-                  <Clock className="h-4 w-4 text-emerald-700" aria-hidden="true" />
+                  <Clock
+                    className="h-4 w-4 text-emerald-700"
+                    aria-hidden="true"
+                  />
                   <span>{m.schedule}</span>
                 </div>
               )}
@@ -197,8 +207,8 @@ function DoctorsGrid({
               {/* //TODO IN CAZ DE AVEM PAGINA PER DR */}
             </CardFooter>
           </Card>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
