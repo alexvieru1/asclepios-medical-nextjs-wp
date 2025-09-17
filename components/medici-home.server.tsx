@@ -40,7 +40,7 @@ export default async function MediciHomeServer() {
         </div>
 
         <div className="rounded-3xl border shadow-sm">
-          <MediciSliderClient testimonials={medics} autoplay />
+          <MediciSliderClient testimonials={medics} />
         </div>
 
         <div className="mt-6 text-center md:hidden">
