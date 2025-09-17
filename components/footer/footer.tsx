@@ -15,7 +15,7 @@ export function Footer() {
   return (
     <footer role="contentinfo" className="border-t bg-white" aria-labelledby="footer-heading">
       <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="grid gap-10 md:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-5">
           {/* Brand */}
           <div>
             <Link href="/" className="inline-flex items-center gap-2">
@@ -85,22 +85,41 @@ export function Footer() {
                   </div>
                 </div>
               </li>
-
               <li className="flex items-center gap-2">
                 <IconPhone className="h-5 w-5 text-emerald-700" />
                 <a href="tel:+40241611445" className="hover:underline">0241.611.445</a>
               </li>
-
               <li className="flex items-center gap-2">
                 <IconPrinter className="h-5 w-5 text-emerald-700" />
                 <a href="tel:+40241511445" className="hover:underline">0241.511.445 (fax)</a>
               </li>
-
               <li className="flex items-center gap-2 break-all">
                 <IconMail className="h-5 w-5 text-emerald-700" />
                 <a href="mailto:office@asclepios-medical.ro" className="hover:underline">
                   office@asclepios-medical.ro
                 </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Confidențialitate & cookie-uri */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900">Confidențialitate</h3>
+            <ul className="mt-4 space-y-2 text-sm text-gray-600">
+              <li><Link href="/gdpr" className="hover:text-emerald-700">Notificare GDPR</Link></li>
+              <li><Link href="/cookies" className="hover:text-emerald-700">Politica de cookie-uri</Link></li>
+              <li>
+                <button
+                  type="button"
+                  className="rounded-lg border px-3 py-1.5 text-left hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-800"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("open-cookie-settings"))
+                    }
+                  }}
+                >
+                  Preferințe cookie
+                </button>
               </li>
             </ul>
           </div>
@@ -115,9 +134,9 @@ export function Footer() {
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 text-sm text-gray-500 md:flex-row">
           <p>© {new Date().getFullYear()} Asclepios Medical Center. Toate drepturile rezervate.</p>
           <div className="flex items-center gap-4">
+            <Link href="/gdpr" className="hover:text-emerald-700">GDPR</Link>
+            <Link href="/cookies" className="hover:text-emerald-700">Cookie-uri</Link>
             <Link href="/termeni-si-conditii" className="hover:text-emerald-700">Termeni</Link>
-            <Link href="/politica-de-confidentialitate" className="hover:text-emerald-700">Confidențialitate</Link>
-            <Link href="/politica-cookie" className="hover:text-emerald-700">Cookie-uri</Link>
           </div>
         </div>
       </div>
