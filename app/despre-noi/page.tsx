@@ -6,21 +6,21 @@ import { ExternalCard } from "@/components/ui/external-card";
 // --- Replace these with real links/images ---
 const CLINIC_PHOTOS = [
   {
-    src: "http://asclepios-medical.ro/wp-content/uploads/2016/06/FormatFactoryDSCF2931.jpg",
+    src: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/FormatFactoryDSCF2931.jpg",
     alt: "Clinica Asclepios",
   },
   {
-    src: "http://asclepios-medical.ro/wp-content/uploads/2016/06/FormatFactoryDSCF2831.jpg",
+    src: "https://complexvrajamarii.ro/wp-content/uploads/2016/06/FormatFactoryDSCF2831.jpg",
     alt: "Recepția clinicii Asclepios",
   },
 ];
 
 const EUROMATERNA_IMG =
-  "http://asclepios-medical.ro/wp-content/uploads/2025/09/logo-1.png";
+  "https://complexvrajamarii.ro/wp-content/uploads/2026/01/logo-euromaterna.png";
 const VRAJA_MARII_IMG =
-  "http://asclepios-medical.ro/wp-content/uploads/2025/09/logo_patrat-300x276-1.png";
+  "https://complexvrajamarii.ro/wp-content/uploads/2026/01/logo-vm.png";
 const DR_RAICA_IMG =
-  "http://asclepios-medical.ro/wp-content/uploads/2025/09/doctor-dan-raica-9.jpg";
+  "https://complexvrajamarii.ro/wp-content/uploads/2026/01/dr-dan-raica-blog.jpg";
 
 // Safer to keep hrefs easily editable:
 const LINKS = {

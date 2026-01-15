@@ -1,4 +1,5 @@
-import { getDoctors, getSpecialties } from "@/lib/clinic"
+import { doctors as localDoctors } from "@/lib/doctors"
+import { specialities as localSpecialities } from "@/lib/specialities"
 import MediciClient from "./page.client"
 import { Metadata } from "next"
 
@@ -26,40 +27,18 @@ export const metadata: Metadata = {
 
 export default async function Page({ searchParams }: PageProps) {
   const params = (await searchParams) ?? {}
-  // Server-side fetching with your wp-graphql wrapper (tagged for revalidation)
-  const [specialties, doctors] = await Promise.all([
-    getSpecialties(),
-    getDoctors(200), // raise if you want more cards by default
-  ])
 
-  // Normalize what the client needs (keeps the client component dead-simple)
+  // Simplified: use local constants
+  const specialties = localSpecialities
+  const doctors = localDoctors
+
+  // Normalize what the client needs
   const simplifiedSpecialties = specialties.map((s) => ({
     slug: s.slug,
-    name: s.name,
+    name: s.title,
   }))
 
-  const simplifiedDoctors = doctors.map((d) => {
-    const img =
-      d.featuredImage?.node?.mediaItemUrl ?? null
-
-    // WPGraphQL inconsistency guard: sometimes it's `specialities`, sometimes `specialties`.
-    // Your `DOCTORS_Q` uses "specialities" (edges->node->name).
-    const doctorSpecs =
-      d.specialities?.edges
-        ?.map((e) => ({
-          name: e?.node?.name ?? "",
-          slug: e?.node?.slug ?? null,
-        }))
-        .filter((s) => s.name.trim().length > 0) ?? []
-
-    return {
-      slug: (d as any).slug as string, // ensure DOCTORS_Q selects `slug`
-      title: d.title,
-      img,
-      specialties: doctorSpecs, // [{ name, (slug?) }]
-      schedule: d.doctorFields?.schedule ?? null,
-    }
-  })
+  const simplifiedDoctors = doctors
 
   const rawSpecialty = Array.isArray(params.sp) ? params.sp[0] : params.sp
   const requestedSpecialty = typeof rawSpecialty === "string" ? rawSpecialty : null

@@ -1,4 +1,4 @@
-import { getSpecialties } from "@/lib/clinic"
+import { specialities as localSpecialities } from "@/lib/specialities"
 import SpecialitatiClient from "./page.client"
 import { Metadata } from "next";
 
@@ -27,18 +27,13 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const specialties = await getSpecialties()
-
-  const simplified = specialties.map((s) => {
-    const imageNode = s.specialityFields?.heroImage?.node ?? null
-    return {
-      slug: s.slug,
-      title: s.name,
-      description: s.specialityFields?.summary ?? "",
-      imageUrl: imageNode?.mediaItemUrl ?? null,
-      imageAlt: imageNode?.altText ?? s.name,
-    }
-  })
+  const simplified = localSpecialities.map((s) => ({
+    slug: s.slug,
+    title: s.title,
+    description: s.description ?? "",
+    imageUrl: s.imageUrl,
+    imageAlt: s.imageAlt,
+  }))
 
   return <SpecialitatiClient specialties={simplified} />
 }

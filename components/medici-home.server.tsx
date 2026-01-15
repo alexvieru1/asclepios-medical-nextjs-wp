@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { getDoctors } from "@/lib/clinic";
+import { doctors as localDoctors } from "@/lib/doctors";
 import { MediciSliderClient } from "./medici-slider.client";
 import type { Testimonial } from "@/components/ui/animated-testimonials";
 
@@ -9,16 +9,16 @@ function toDesignation(specialities: string[]) {
 }
 
 export default async function MediciHomeServer() {
-  const doctors = await getDoctors();
+  const doctors = localDoctors;
 
   const items: Testimonial[] = doctors.map((d) => {
     const specialities =
-      d.specialities?.edges?.map((e) => e.node?.name).filter(Boolean) ?? [];
+      d.specialties?.map((e) => e.name).filter(Boolean) ?? [];
     return {
       name: d.title ?? "Medic",
       designation: toDesignation(specialities),
-      quote: d.doctorFields?.shortDescription ?? "Consultații și îngrijire medicală.",
-      src: d.featuredImage?.node?.mediaItemUrl ?? "/images/placeholder-doctor.jpg",
+      quote: "Consultații și îngrijire medicală.", // Fallback as local data doesn't have quote
+      src: d.img ?? "/images/placeholder-doctor.jpg",
     };
   });
 
@@ -52,3 +52,4 @@ export default async function MediciHomeServer() {
     </section>
   );
 }
+

@@ -1,4 +1,5 @@
-import { getDoctors, getSpecialties } from "@/lib/clinic"
+import { doctors as localDoctors } from "@/lib/doctors"
+import { specialities as localSpecialities } from "@/lib/specialities"
 import ContactClient from "./page.client"
 import { Metadata } from "next"
 
@@ -27,24 +28,22 @@ export const metadata: Metadata = {
 export default async function Page({ searchParams }: PageProps) {
   const params = (await searchParams) ?? {}
 
-  const [specialties, doctors] = await Promise.all([
-    getSpecialties(),
-    getDoctors(200),
-  ])
+  const specialties = localSpecialities
+  const doctors = localDoctors
 
   const specialtyOptions = specialties.map((s) => ({
     slug: s.slug,
-    name: s.name,
+    name: s.title,
   }))
 
   const doctorOptions = doctors
     .map((doctor) => {
-      const slug = (doctor as any).slug as string | undefined
+      const slug = doctor.slug
       if (!slug) return null
 
       const specialtiesForDoctor =
-        doctor.specialities?.edges
-          ?.map((edge) => edge?.node?.slug)
+        doctor.specialties
+          ?.map((s) => s.slug)
           .filter((value): value is string => Boolean(value)) ?? []
 
       return {

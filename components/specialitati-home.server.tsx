@@ -1,14 +1,14 @@
-import { getSpecialties } from "@/lib/clinic";
+import { specialities as localSpecialities } from "@/lib/specialities";
 import { SpecialitatiHome, type SpecItem } from "./specialitati-home";
 
 export default async function SpecialitatiHomeServer() {
-  const specialties = await getSpecialties();
+  const specialties = localSpecialities;
 
   const items: SpecItem[] = specialties.map((sp) => ({
     slug: sp.slug,
-    title: sp.name,
-    desc: sp.specialityFields?.summary ?? "",
-    img: sp.specialityFields?.heroImage?.node?.mediaItemUrl ?? null,
+    title: sp.title,
+    desc: sp.description ?? "",
+    img: sp.imageUrl,
   }));
 
   return <SpecialitatiHome items={items} />;

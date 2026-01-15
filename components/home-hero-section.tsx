@@ -7,7 +7,7 @@ export function HeroSection() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="relative h-[300px] lg:h-[500px] w-full overflow-hidden">
-        <VideoText src="https://asclepios-medical.ro/wp-content/uploads/2025/09/hero-section.webm">
+        <VideoText src="https://complexvrajamarii.ro/wp-content/uploads/2026/01/hero-section.webm">
           ASCLEPIOS
         </VideoText>
       </div>
