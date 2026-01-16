@@ -1,8 +1,17 @@
 "use client";
 
 import { motion } from "motion/react";
+import { ExternalCard } from "./ui/external-card";
 
 export function AboutSection() {
+  const EUROMATERNA_IMG =
+    "https://complexvrajamarii.ro/wp-content/uploads/2026/01/logo-euromaterna.png";
+  const VRAJA_MARII_IMG =
+    "https://complexvrajamarii.ro/wp-content/uploads/2026/01/logo-vm.png";
+  const LINKS = {
+    euromaterna: "https://www.euromaterna.ro/",
+    vrajaMarii: "https://complexvrajamarii.ro/",
+  };
   return (
     <section id="despre-noi" className="py-16">
       <div className="mx-auto max-w-5xl px-6">
@@ -60,6 +69,24 @@ export function AboutSection() {
           >
             Află mai multe
           </a>
+        </div>
+      </div>
+      <div className="flex justify-center max-w-2xl px-6">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          <ExternalCard
+            title="Euromaterna"
+            href={LINKS.euromaterna}
+            imgSrc={EUROMATERNA_IMG}
+            alt="Euromaterna"
+            fit="contain"
+          />
+          <ExternalCard
+            title="Complex Vraja Mării"
+            href={LINKS.vrajaMarii}
+            imgSrc={VRAJA_MARII_IMG}
+            alt="Complex Vraja Mării"
+            fit="contain"
+          />
         </div>
       </div>
     </section>

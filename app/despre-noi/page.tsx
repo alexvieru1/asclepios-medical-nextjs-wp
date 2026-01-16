@@ -10,7 +10,7 @@ const CLINIC_PHOTOS = [
     alt: "Clinica Asclepios",
   },
   {
-    src: "https://complexvrajamarii.ro/wp-content/uploads/2016/06/FormatFactoryDSCF2831.jpg",
+    src: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/FormatFactoryDSCF2831.jpg",
     alt: "Recepția clinicii Asclepios",
   },
 ];
