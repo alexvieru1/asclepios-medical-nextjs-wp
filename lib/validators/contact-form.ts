@@ -12,7 +12,7 @@ export const contactFormSchema = z.object({
   email: z
     .string()
     .trim()
-    .email("Introduceți o adresa de email valida."),
+    .email("Introduceți o adresă de email validă."),
   phone: phoneText,
   specialty: optionalText,
   doctor: optionalText,
@@ -25,7 +25,7 @@ export const contactFormSchema = z.object({
   consent: z
     .boolean()
     .refine((value) => value === true, {
-      message: "Va rugam sa acceptati prelucrarea datelor personale.",
+      message: "Vă rugăm să acceptați prelucrarea datelor personale.",
     }),
 })
 

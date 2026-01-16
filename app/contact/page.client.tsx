@@ -251,7 +251,7 @@ export default function ContactClient({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-emerald-900">
-                        Telefon
+                        Telefon*
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -292,7 +292,7 @@ export default function ContactClient({
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-emerald-900">
-                        Specialitate
+                        Specialitate*
                       </FormLabel>
                       <Select
                         onValueChange={(value) =>
