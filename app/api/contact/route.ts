@@ -1,4 +1,3 @@
-// app/api/contact/route.ts
 import { NextResponse } from "next/server"
 import { Resend } from "resend"
 import { contactFormSchema } from "@/lib/validators/contact-form"
@@ -19,9 +18,7 @@ export async function POST(req: Request) {
 
     const body = parseResult.data
 
-    // Honeypot check
     if (body.website) {
-      // Return success to bot
       return NextResponse.json({ success: true, message: "Mulțumim!" })
     }
 

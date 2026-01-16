@@ -7,7 +7,6 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
 
-    // Get title and description from the URL query params
     const title = searchParams.get("title");
     const description = searchParams.get("description");
 

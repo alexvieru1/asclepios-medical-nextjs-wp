@@ -31,7 +31,7 @@ import {
   type ContactFormInput,
 } from "@/lib/validators/contact-form";
 import { cn } from "@/lib/utils";
-import { format, isValid, parseISO, startOfToday } from "date-fns";
+import { format, isValid, isWeekend, parseISO, startOfToday } from "date-fns";
 import { ro } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
 import ContactAssist from "@/components/contact-assist";
@@ -40,7 +40,6 @@ function toastAppointmentSuccess(
   values: ContactFormInput,
   specialties: { slug: string; name: string }[]
 ) {
-  // show the pretty label even if you store/post slugs
   const label =
     specialties.find(
       (s) => s.slug === values.specialty || s.name === values.specialty
@@ -122,13 +121,11 @@ export default function ContactClient({
   }, [filteredDoctors, form]);
 
   const onSubmit = async (values: ContactFormInput) => {
-    // map slug -> CF7 label
     const cf7Speciality =
       specialties.find((s) => s.slug === values.specialty)?.name ||
       values.specialty ||
       "";
 
-    // map doctor slug -> display name (CF7 field is free text)
     const doctorName =
       doctors.find((d) => d.slug === values.doctor)?.name ||
       values.doctor ||
@@ -546,7 +543,7 @@ const PreferredDatePicker = React.forwardRef<
               setIsOpen(false);
               onBlur();
             }}
-            disabled={(date) => date < today}
+            disabled={(date) => date < today || isWeekend(date)}
           />
         </div>
       ) : null}

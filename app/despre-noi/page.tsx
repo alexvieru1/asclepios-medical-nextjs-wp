@@ -3,7 +3,6 @@ import HeroFadeCarousel from "@/components/hero-fade-in";
 import { ExternalCard } from "@/components/ui/external-card";
 
 
-// --- Replace these with real links/images ---
 const CLINIC_PHOTOS = [
   {
     src: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/FormatFactoryDSCF2931.jpg",
@@ -22,11 +21,10 @@ const VRAJA_MARII_IMG =
 const DR_RAICA_IMG =
   "https://complexvrajamarii.ro/wp-content/uploads/2026/01/dr-dan-raica-blog.jpg";
 
-// Safer to keep hrefs easily editable:
 const LINKS = {
-  euromaterna: "https://www.euromaterna.ro/", // update if needed
-  vrajaMarii: "https://complexvrajamarii.ro/", // update if needed
-  drRaica: "https://dan.raica.ro/", // update if needed
+  euromaterna: "https://www.euromaterna.ro/",
+  vrajaMarii: "https://complexvrajamarii.ro/",
+  drRaica: "https://dan.raica.ro/",
 };
 
 export const metadata: Metadata = {

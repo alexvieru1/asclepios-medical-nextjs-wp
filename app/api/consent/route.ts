@@ -9,7 +9,7 @@ type Consent = {
 };
 
 const COOKIE_NAME = "cookie_consent_v1";
-const MAX_AGE = 60 * 60 * 24 * 180; // 180 days
+const MAX_AGE = 60 * 60 * 24 * 180;
 
 export async function POST(req: Request) {
   let body: unknown;
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
     value: JSON.stringify(consent),
     httpOnly: false,
     sameSite: "lax",
-    secure: true, // keep true in production (HTTPS)
+    secure: true,
     path: "/",
     maxAge: MAX_AGE,
   });
