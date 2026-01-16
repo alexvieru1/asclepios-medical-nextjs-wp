@@ -71,7 +71,7 @@ export function AboutSection() {
           </a>
         </div>
       </div>
-      <div className="flex justify-center max-w-2xl px-6">
+      <div className="mx-auto flex justify-center max-w-2xl px-6">
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           <ExternalCard
             title="Euromaterna"
