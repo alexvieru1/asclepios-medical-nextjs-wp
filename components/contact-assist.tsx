@@ -47,7 +47,7 @@ export default function ContactAssist({
         <div className="flex flex-col justify-center gap-6">
           <div>
             <h2 className="text-emerald-900 text-xl font-bold md:text-2xl">
-              Preferi telefonul?
+              Dorești o programare?
             </h2>
             <p className="mt-2 text-emerald-900/70 leading-relaxed">
               Sună-ne și îți facem noi programarea. Este cea mai rapidă

@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     }
 
     const resend = new Resend(resendApiKey)
-    const fromEmail = "Asclepios Contact <onboarding@resend.dev>" 
+    const fromEmail = "Asclepios Cardio <noreply@asclepios-medical.ro>" 
     const toEmail = process.env.CONTACT_EMAIL || "contact@asclepios-medical.ro" 
 
     const { data, error } = await resend.emails.send({

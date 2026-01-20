@@ -192,7 +192,7 @@ export default function ContactClient({
   return (
     <section className="bg-gradient-to-t from-emerald-50 via-white to-white">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <header className="mb-10 text-center">
+        {/* <header className="mb-10 text-center">
           <h1 className="text-emerald-900 text-2xl font-bold md:text-3xl">
             Solicită o programare
           </h1>
@@ -200,9 +200,9 @@ export default function ContactClient({
             Completați formularul, iar echipa noastră vă va contacta pentru
             confirmare.
           </p>
-        </header>
+        </header> */}
 
-        <div className="rounded-3xl border border-emerald-100 bg-white/90 p-6 shadow-xl shadow-emerald-100/40 backdrop-blur sm:p-10">
+        {/* <div className="rounded-3xl border border-emerald-100 bg-white/90 p-6 shadow-xl shadow-emerald-100/40 backdrop-blur sm:p-10">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
               <div className="grid gap-6 sm:grid-cols-2">
@@ -429,7 +429,6 @@ export default function ContactClient({
                 )}
               />
 
-              {/* Honeypot */}
               <FormField
                 control={form.control}
                 name="website"
@@ -452,7 +451,7 @@ export default function ContactClient({
               </Button>
             </form>
           </Form>
-        </div>
+        </div> */}
 
         <ContactAssist
           address="Str. Prelungirea Bucovinei nr. 8B, Apartament 1, 900615 Constanța"
