@@ -24,6 +24,11 @@ const nextConfig: NextConfig = {
         destination: `${process.env.WORDPRESS_URL}/wp-admin`,
         permanent: true,
       },
+      {
+        source: "/webmail",
+        destination: "http://193.231.242.80:2096",
+        permanent: true,
+      },
     ];
   },
 };
