@@ -21,7 +21,7 @@ export const doctors: Doctor[] = [
   {
     slug: "dr-adriana-raica",
     title: "Dr. Adriana Raica",
-    img: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/female-medic.jpg",
+    img: null,
     specialties: [
       { name: "Cardiologie", slug: "cardiologie" },
       { name: "Medicină Internă", slug: "medicina-interna" },
@@ -32,7 +32,7 @@ export const doctors: Doctor[] = [
   {
     slug: "dr-anca-cretu",
     title: "Dr. Anca Crețu",
-    img: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/female-medic.jpg",
+    img: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/WhatsApp-Image-2026-01-23-at-12.23.28.jpeg",
     specialties: [{ name: "Cardiologie", slug: "cardiologie" }],
     schedule: "Luni - Vineri: 09:00 - 17:00",
     quote: "Consultații și îngrijire medicală.",
@@ -40,7 +40,7 @@ export const doctors: Doctor[] = [
   {
     slug: "dr-oana-laura-coiciu",
     title: "Dr. Oana Laura Coiciu",
-    img: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/female-medic.jpg",
+    img: null,
     specialties: [
       { name: "Cardiologie", slug: "cardiologie" },
       { name: "Medicină Internă", slug: "medicina-interna" },
@@ -51,7 +51,7 @@ export const doctors: Doctor[] = [
   {
     slug: "dr-cirimpei-lidia",
     title: "Dr. Lidia Cirimpei",
-    img: "https://complexvrajamarii.ro/wp-content/uploads/2026/01/female-medic.jpg",
+    img: null,
     specialties: [
       { name: "Cardiologie", slug: "cardiologie" },
     ],

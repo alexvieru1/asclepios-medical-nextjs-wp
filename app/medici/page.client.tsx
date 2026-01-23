@@ -155,7 +155,7 @@ function DoctorsGrid({
                 />
               ) : (
                 <div className="absolute inset-0 grid place-items-center text-sm text-muted-foreground">
-                  Fără imagine
+                  {m.title}
                 </div>
               )}
               <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />

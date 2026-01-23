@@ -36,7 +36,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection/>
       <SpecialitatiHomeServer/>
-      <MediciHomeServer/>
+      {/* <MediciHomeServer/> */}
     </div>
   );
 }
