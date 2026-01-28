@@ -77,13 +77,6 @@ export default function SpecialitatiClient({
                     Solicită programare
                   </Link>
                 </Button>
-                <Button
-                  asChild
-                  variant="ghost"
-                  className="text-emerald-700 hover:bg-emerald-50"
-                >
-                  <Link href={`/specialitati/${s.slug}`}>Află mai multe</Link>
-                </Button>
               </CardFooter>
             </Card>
           ))}
